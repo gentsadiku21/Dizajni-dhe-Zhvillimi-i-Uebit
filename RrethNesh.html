@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> 
+    <link rel="stylesheet" href="RrethNesh.css">
+    <title>Dhuro Gjak</title>
+</head>
+<body>
+   
+        <div class="wrapper">
+           <nav class="nav">
+               <div class="nav-logo">
+                   <p> Dhuro Gjak</p>
+               </div>
+               <div class="nav-menu" id="navMenu">
+                   <ul>
+                       <li><a href="Ballin.html" class="link">Ballina</a></li>
+                       <li><a href="#" class="link">Dhuruesit</a></li>
+                       <li><a href="#" class="link">Kerkuesit</a></li>
+                       <li><a href="RrethNesh.html" class="link active">Rreth Nesh</a></li>
+                       <li><a href="Login-Signup.html" class="link ">Kyçu</a></li>
+                   </ul>
+               </div>
+            
+               <div class="nav-menu-btn">
+                   <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+               </div>
+           </nav>
+        </div>
+<br>
+<br>
+<br>
+<br>
+ <!-- pjesa e kontaktit -->
+ <section id="contact-section">
+    <div class="container">
+    <div class="contact-form">
+           <!-- pjesa pare -->
+        <div>
+          <i class="fa fa-map-marker"></i><span class="form-info">  Lagjja Kalabria,10000 Prishtine, Kosovo </span><br>
+          <i class="fa fa-phone" > </i><span class="form-info"> +383 44-888-999</span><br>
+          <i class="fa fa-envelope"></i><span class="form-info"> Dhuro.Gjak@gmail.com</span>
+        </div>
+        
+            <!-- pjesa dyte -->
+            <div class="contact-container" id="contact">
+                <h1>Na Kontaktoni</h1>
+                <form id="contactForm">
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" id="Firstname" class="input-field" placeholder="Emri">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="Lastname" class="input-field" placeholder="Mbiemri">
+                     </div>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="Email" class="input-field" placeholder="Email">
+                </div>
+                <div class="input-box">
+                    <textarea type="text" id="Koment" class="input-field" rows="5" placeholder="Shkruani mesazhin tuaj!"></textarea>
+                </div>
+                <div class="input-box">
+                    <input type="submit" id="Submit" class="submit" value="Dergo">
+                </div>
+                   </form>   
+                </div>
+           </div>
+       </div>
+    </section>
+<br>
+       
+              <footer class="footer">
+            <div class="container">
+    
+              <p class="copyright">
+                &copy; 2024 All Rights Reserved by <a href="#" class="copyright-link">Dhuro & Kerko Gjake</a>
+              </p>
+        
+            </div> 
+          </footer>
+          <script>
+   
+            function myMenuFunction() {
+             var i = document.getElementById("navMenu");
+             if(i.className === "nav-menu") {
+                 i.className += " responsive";
+             } else {
+                 i.className = "nav-menu";
+             }
+            }
+        /*  Javascript per me bo hide navbar kur jem scrool posht*/
+            let lastScrollTop = 0;
+window.addEventListener('scroll', function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (currentScroll > lastScrollTop) {
+        // Kur Bojm Scrool down
+        document.querySelector('.nav').classList.add('nav-hidden');
+    } else {
+        // Kur Bojm Scroll up
+        document.querySelector('.nav').classList.remove('nav-hidden');
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+}, false);
+/*==========================================================================*/
+   ////////// per Kontakt Form
+   document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    // i merr vlerat qe shtyp user
+    const Firstname = document.getElementById('Firstname').value;
+    const Lastname = document.getElementById('Lastname').value;
+    const Email = document.getElementById('Email').value;
+    const Koment = document.getElementById('Koment').value;
+    // validimi i inputeve
+    if (!isValidFirstname(Firstname)) {
+        alert('Emri është shkruar gabimë');
+        return;
+    }
+    if (!isValidLastname(Lastname)) {
+        alert('Mbiemri është shkruar gabimë');
+        return;
+    }
+    if (!isValidEmail(Email)) {
+        alert('Email është shkruar gabimë.');
+        return;
+    }
+    if (!isValidKoment(Koment)) {
+        alert('Komenti nuk është plotësuar mir');
+        return;
+    }
+ 
+          // Nese validimi eshte bere me sukses atëher e bon alert mesazhin posht
+         alert('Validimi është bërë me sukses!');
+});
+// Kushtet e validimit
+function isValidFirstname(Firstname) {
+    return /^[A-Z]/.test(Firstname);
+}
+const Firstname = Firstname; 
+if (isValidFirstname(Firstname)) {
+    console.log("Valid name"); // Nese emri fillon me shkronje te madhe
+} else {
+    console.log("Invalid name"); // Nese nuk fillon me shkronje te madhe
+}
+function isValidLastname(Lastname) {
+    // Emri nuk duhet me kan i zbrazet
+    return /^[A-Z]/.test(Lastname);
+}
+const inputLastname = Lastname
+if (isValidLastname(Lastname)) {
+    console.log("Valid Lastname"); //Nese Mbiemri fillon me shkronje te madhe
+} else {
+    console.log("Invalid Lastname"); // Nese Mbiemri fillon me shkronje te madhe
+}
+function isValidEmail(Email) {
+    
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(Email);
+}
+function isValidKoment(Koment) {
+return /^[A-Z]/.test(Koment);
+}
+          
+   
+         </script>
+     
+</body>
+</html>
