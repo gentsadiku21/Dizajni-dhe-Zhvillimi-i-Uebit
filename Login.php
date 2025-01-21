@@ -72,7 +72,7 @@ session_start();
 
         <div class="nav-menu" id="navMenu">
             <ul>
-                <li><a href="ballina.php" class="link ">Ballina</a></li>
+                <li><a href="Ballina.php" class="link ">Ballina</a></li>
                 <li><a href="Dhuruesit.php" class="link">Dhuruesit</a></li>
                 <li><a href="Kerkuesit.php" class="link">Kerkuesit</a></li>
                 <li><a href="RrethNesh.php" class="link">Rreth Nesh</a></li>
@@ -114,7 +114,6 @@ session_start();
                 </div>
             </div>
         </div>
-        <!------------------- Pjesa Per Regjistrim-------------------------->
 
             </form>
 

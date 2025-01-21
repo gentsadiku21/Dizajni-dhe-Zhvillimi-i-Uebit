@@ -18,7 +18,7 @@ session_start();
 		{
 
 			//save to database
-			$user_id = random_num();
+			$user_id = random_num(20);
 			$query = "insert into users (user_id,Firstname,Lastname,Email,Password) values ('$user_id','$Firstname','$Lastname','$Email','$Password')";
 
 			mysqli_query($con, $query);
@@ -39,7 +39,6 @@ session_start();
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,48 +55,48 @@ session_start();
         <div class="nav-logo">
             <p> Dhuro Gjak</p>
         </div>
+
+
         <div class="nav-menu" id="navMenu">
             <ul>
-                <li><a href="Ballina.html" class="link ">Ballina</a></li>
-                <li><a href="Dhuruesit.html" class="link">Dhuruesit</a></li>
-                <li><a href="#" class="link">Kerkuesit</a></li>
-                <li><a href="RrethNesh.html" class="link">Rreth Nesh</a></li>
+                <li><a href="ballina.php" class="link ">Ballina</a></li>
+                <li><a href="Dhuruesit.php" class="link">Dhuruesit</a></li>
+                <li><a href="Kerkuesit.php" class="link">Kerkuesit</a></li>
+                <li><a href="RrethNesh.php" class="link">Rreth Nesh</a></li>
                 <li><a href="#" class="link active ">Kyçu</a></li>
             </ul>
         </div>
-     
+
         <div class="nav-menu-btn">
             <i class="bx bx-menu" onclick="myMenuFunction()"></i>
         </div>
     </nav>
-   
+<!----------------------------- kuti e formes ----------------------------------->    
     <div class="form-box">
-        
-        
-     
-        <!------------------- Pjesa Per Regjistrim-------------------------->
-        <div class="register-container" id="register">
+
+       
+
+        <div class="login-container" id="login">
             <div class="top">
-               
-                <header>Sign Up</header>
+            <header>Sign Up</header>
             </div>
-            <form id="registerForm">
+            <form id="registerForm" method="post">
             <div class="two-forms">
                 <div class="input-box">
-                    <input type="text" id="Firstname" class="input-field" placeholder="Firstname">
+                    <input type="text" id="Firstname" class="input-field" placeholder="Firstname" name="Firstname">
                     <i class="bx bx-user"></i>
                 </div>
                 <div class="input-box">
-                    <input type="text" id="Lastname" class="input-field" placeholder="Lastname">
+                    <input type="text" id="Lastname" class="input-field" placeholder="Lastname" name="Lastname">
                     <i class="bx bx-user"></i>
                 </div>
             </div>
             <div class="input-box">
-                <input type="text" id="RegisterEmail" class="input-field" placeholder="Email">
+                <input type="text" id="RegisterEmail" class="input-field" placeholder="Email" name="Email">
                 <i class="bx bx-envelope"></i>
             </div>
             <div class="input-box">
-                <input type="registerpassword" id="RegisterPassword" class="input-field" placeholder="Password">
+                <input type="registerpassword" id="RegisterPassword" class="input-field" placeholder="Password" name="Password">
                 <i class="bx bx-lock-alt"></i>
             </div>
             <div class="input-box">
@@ -105,17 +104,18 @@ session_start();
             </div>
             </form>
             <div class="two-col">
-                
+
                 <div class="top">
                     <span>Have an account? <a href="Login.php" onclick="login()">Login</a></span>
                 </div>
+
             </div>
         </div>
-    </div>
-</div>   
+    
+
 <!-----   pjesa e javascript per meny (navbar)  -->
 <script>
-   
+
    function myMenuFunction() {
     var i = document.getElementById("navMenu");
     if(i.className === "nav-menu") {
@@ -124,7 +124,10 @@ session_start();
         i.className = "nav-menu";
     }
    }
- 
+
 </script>
+
+
+
 </body>
 </html>
