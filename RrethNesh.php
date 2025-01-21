@@ -1,3 +1,16 @@
+<?php 
+session_start();
+
+	include("connection.php");
+	include("functions.php");
+
+	$user_data = check_login($con);
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +31,11 @@
                </div>
                <div class="nav-menu" id="navMenu">
                    <ul>
-                       <li><a href="Ballina.html" class="link">Ballina</a></li>
-                       <li><a href="Dhuruesit.html" class="link">Dhuruesit</a></li>
-                       <li><a href="Kerkuesit.html" class="link">Kerkuesit</a></li>
-                       <li><a href="RrethNesh.html" class="link active">Rreth Nesh</a></li>
-                       <li><a href="Login-Signup.html" class="link ">Kyçu</a></li>
+                       <li><a href="Ballina.php" class="link">Ballina</a></li>
+                       <li><a href="Dhuruesit.php" class="link">Dhuruesit</a></li>
+                       <li><a href="Kerkuesit.php" class="link">Kerkuesit</a></li>
+                       <li><a href="RrethNesh.php" class="link active">Rreth Nesh</a></li>
+                       <li><a href="logout.php" class="link ">Log-Out</a></li>
                    </ul>
                </div>
             

@@ -1,3 +1,14 @@
+<?php 
+session_start();
+
+include("connection.php");
+include("functions.php");
+
+$user_data = check_login($con);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,14 +28,15 @@
                </div>
                <div class="nav-menu" id="navMenu">
                    <ul>
-                       <li><a href="Ballin.html" class="link active ">Ballina</a></li>
-                       <li><a href="Dhuruesit.html" class="link">Dhuruesit</a></li>
-                       <li><a href="Kerkuesit.html" class="link">Kerkuesit</a></li>
-                       <li><a href="RrethNesh.html" class="link">Rreth Nesh</a></li>
-                       <li><a href="Login-Signup.html" class="link ">Kyçu</a></li>
+                      
+                       <li><a href="Ballina.php" class="link active ">Ballina</a></li>
+                       <li><a href="Dhuruesit.php" class="link">Dhuruesit</a></li>
+                       <li><a href="Kerkuesit.php" class="link">Kerkuesit</a></li>
+                       <li><a href="RrethNesh.php" class="link">Rreth Nesh</a></li>
+                       <li><a href="logout.php" class="link ">Log-Out</a></li>
                    </ul>
                </div>
-            
+
                <div class="nav-menu-btn">
                    <i class="bx bx-menu" onclick="myMenuFunction()"></i>
                </div>
@@ -78,7 +90,7 @@
 <div class="card card-1">
     <!-- card-header -->
     <div class="card-header">
-      <img src="Images/DhuroGjake2.jpg" class="card-img" />
+      <img src="Images/DhuroGjake.jpg" class="card-img" />
     </div>
     
     <!------->
@@ -103,7 +115,7 @@
   <div class="card card-2">
     <!-- card-header -->
     <div class="card-header">
-      <img src="Images/DhuroGjake3.jpg" class="card-img" />
+      <img src="Images/DhuroGjake2.jpg" class="card-img" />
     </div>
     <!-- card-header -->
     <!-- card-body -->
@@ -117,7 +129,7 @@
     </div>
     <!-- card-body -->
     <div class="card-footer">
-        <a href="DhuruesitPyetsori.html">
+        <a href="Kerkogjak.html">
             <button class="btn" >Vazhdo</button>
                 </a>
     </div>
@@ -128,7 +140,7 @@
   <div class="card card-3">
     <!-- card-header -->
     <div class="card-header">
-      <img src="Images/DhuroGjake.jpg" class="card-img" />
+      <img src="Images/DhuroGjake3.jpg" class="card-img" />
     </div>
     <!-- card-header -->
     <!-- card-body -->
@@ -140,9 +152,11 @@ Për çdo nevojë ose arsyje mund të na kontaktoni
       </p>
     </div>
     <!-- card-body -->
+
     <!-- card-footer -->
     <div class="card-footer">
-        <a href="Login-Signup.html">
+
+        <a href="RrethNesh.php">
             <button class="btn" >Vazhdo</button>
                 </a>
     </div>
@@ -156,7 +170,7 @@ Për çdo nevojë ose arsyje mund të na kontaktoni
             <div class="container">
         
               <p class="copyright">
-                &copy; 2024 All Rights Reserved by <a href="#" class="copyright-link">Dhuro & Kerko Gjake</a>
+              &copy; 2024 All Rights Reserved by <a href="#" class="copyright-link">Dhuro & Kerko Gjake</a>
               </p>
         
             </div> 
