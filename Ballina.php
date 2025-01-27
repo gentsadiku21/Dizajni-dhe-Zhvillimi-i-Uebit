@@ -1,12 +1,21 @@
 <?php 
+$hide="";
 session_start();
 
 include("connection.php");
 include("functions.php");
 
-$user_data = check_login($con);
+  $user_data = check_login($con);
 
-?>
+$user_data = check_login($con);
+  $hide_dashboard = true;
+
+// me bo check a ka bo log in user apo admin based on the role 
+if(isset($_SESSION['user_id']) && $user_data['Role'] === 'admin') {
+    // nese admini ka bo log in mos me bo hide dashboard
+    $hide_dashboard = false;
+}
+		?>
 
 
 <!DOCTYPE html>
@@ -28,15 +37,20 @@ $user_data = check_login($con);
                </div>
                <div class="nav-menu" id="navMenu">
                    <ul>
-                      
                        <li><a href="Ballina.php" class="link active ">Ballina</a></li>
                        <li><a href="Dhuruesit.php" class="link">Dhuruesit</a></li>
                        <li><a href="Kerkuesit.php" class="link">Kerkuesit</a></li>
                        <li><a href="RrethNesh.php" class="link">Rreth Nesh</a></li>
-                       <li><a href="logout.php" class="link ">Log-Out</a></li>
+                       <?php
+                // php me bo hide Dashboard nese User log in
+                if(!$hide_dashboard) {
+                    echo '<li><a href="dashboard.php" class="link">Dashboard</a></li>';
+                }
+            ?>
+                       <li><a href="logout.php" class="link ">logout</a></li>
                    </ul>
                </div>
-
+            
                <div class="nav-menu-btn">
                    <i class="bx bx-menu" onclick="myMenuFunction()"></i>
                </div>
@@ -78,7 +92,7 @@ $user_data = check_login($con);
            
              <p> Dikush ka nevojë për ju.</p>
                 <br>
-                <a href="DhuruesitPyetsori.html">
+                <a href="DhuruesitPyetsori.php">
             <button class="btn" >Vazhdo</button>
                 </a>
 		</div>
@@ -90,7 +104,7 @@ $user_data = check_login($con);
 <div class="card card-1">
     <!-- card-header -->
     <div class="card-header">
-      <img src="Images/DhuroGjake.jpg" class="card-img" />
+      <img src="Images/Dhurogjake.jpg" class="card-img" />
     </div>
     
     <!------->
@@ -105,7 +119,7 @@ $user_data = check_login($con);
     <!------->
     <!-- card-fotter -->
     <div class="card-footer">
-        <a href="DhuruesitPyetsori.html">
+        <a href="DhuruesitPyetsori.php">
             <button class="btn" >Vazhdo</button>
                 </a>
     </div>
@@ -115,7 +129,7 @@ $user_data = check_login($con);
   <div class="card card-2">
     <!-- card-header -->
     <div class="card-header">
-      <img src="Images/DhuroGjake2.jpg" class="card-img" />
+      <img src="Images/Dhurogjake2.jpg" class="card-img" />
     </div>
     <!-- card-header -->
     <!-- card-body -->
@@ -129,7 +143,7 @@ $user_data = check_login($con);
     </div>
     <!-- card-body -->
     <div class="card-footer">
-        <a href="Kerkogjak.html">
+        <a href="Kerkogjak.php">
             <button class="btn" >Vazhdo</button>
                 </a>
     </div>
@@ -140,7 +154,7 @@ $user_data = check_login($con);
   <div class="card card-3">
     <!-- card-header -->
     <div class="card-header">
-      <img src="Images/DhuroGjake3.jpg" class="card-img" />
+      <img src="Images/Dhurogjake3.jpg" class="card-img" />
     </div>
     <!-- card-header -->
     <!-- card-body -->
@@ -152,10 +166,8 @@ Për çdo nevojë ose arsyje mund të na kontaktoni
       </p>
     </div>
     <!-- card-body -->
-
     <!-- card-footer -->
     <div class="card-footer">
-
         <a href="RrethNesh.php">
             <button class="btn" >Vazhdo</button>
                 </a>
@@ -170,13 +182,16 @@ Për çdo nevojë ose arsyje mund të na kontaktoni
             <div class="container">
         
               <p class="copyright">
-              &copy; 2024 All Rights Reserved by <a href="#" class="copyright-link">Dhuro & Kerko Gjake</a>
+                &copy; 2024 All Rights Reserved by <a href="#" class="copyright-link">Dhuro & Kerko Gjake</a>
               </p>
         
             </div> 
           </footer>
+
+
         <script>
-   
+<script>
+
             function myMenuFunction() {
              var i = document.getElementById("navMenu");
              if(i.className === "nav-menu") {
