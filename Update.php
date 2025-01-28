@@ -63,14 +63,13 @@ if (isset($_GET['id'])) {
             justify-content: center;
             color: white;
         }
-
         .back-link {
             position: absolute;
             top: 20px;
             left: 20px;
-            font-size: 18px;
-            text-decoration: none;
+            font-size: 25px;
             color: white;
+            text-decoration: none;
         }
 
         form {

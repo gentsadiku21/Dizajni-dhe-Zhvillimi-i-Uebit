@@ -37,10 +37,10 @@ body {
     filter: brightness(0.9); 
 }
 .container{
-	color:black;
+	color:white;
 }
 .link {
-            color: white;
+            color: black;
             font-size: 20px; 
             text-decoration: none;
         }
@@ -71,7 +71,7 @@ body {
 		<tr>
 		<th>User_id</th>
 		<th>First-Name</th>
-		<th>Last-Nmae</th>
+		<th>Last-Name</th>
 		<th>Email</th>
 		<th>Password</th>
 	</tr>

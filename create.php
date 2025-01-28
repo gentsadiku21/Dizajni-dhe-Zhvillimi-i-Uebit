@@ -52,9 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             position: absolute;
             top: 20px;
             left: 20px;
-            font-size: 18px;
-            text-decoration: none;
+            font-size: 25px;
             color: white;
+            text-decoration: none;
         }
 
         form {
