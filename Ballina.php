@@ -5,9 +5,9 @@ session_start();
 include("connection.php");
 include("functions.php");
 
-  $user_data = check_login($con);
-
+  
 $user_data = check_login($con);
+
   $hide_dashboard = true;
 
 // me bo check a ka bo log in user apo admin based on the role 
