@@ -83,11 +83,11 @@ session_start();
             <form id="registerForm" method="post">
             <div class="two-forms">
                 <div class="input-box">
-                    <input type="text" id="Firstname" class="input-field" placeholder="Firstname" name="Firstname">
+                    <input type="text" id="Firstname" class="input-field" placeholder="Firstname" name="Firstname"  required pattern="[A-Z][a-z]*" title="Emri duhet te filloje me shkronje te madhe">
                     <i class="bx bx-user"></i>
                 </div>
                 <div class="input-box">
-                    <input type="text" id="Lastname" class="input-field" placeholder="Lastname" name="Lastname">
+                    <input type="text" id="Lastname" class="input-field" placeholder="Lastname" name="Lastname" required pattern="[A-Z][a-z]*" title="Mbiemri duhet te filloje me shkronje te madhe">
                     <i class="bx bx-user"></i>
                 </div>
             </div>
@@ -96,7 +96,7 @@ session_start();
                 <i class="bx bx-envelope"></i>
             </div>
             <div class="input-box">
-                <input type="registerpassword" id="RegisterPassword" class="input-field" placeholder="Password" name="Password">
+                <input type="registerpassword" id="RegisterPassword" class="input-field" placeholder="Password" name="Password" required minlength="8" title="Password duhet te jet se paku 8 karaktere">
                 <i class="bx bx-lock-alt"></i>
             </div>
             <div class="input-box">
