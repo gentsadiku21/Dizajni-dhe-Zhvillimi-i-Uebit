@@ -5,6 +5,7 @@ include("connection.php");
 include("functions.php");
 
 $user_data = check_login($con);
+
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
     //something was posted
@@ -88,20 +89,20 @@ if( !empty($Firstname) && !empty($Lastname) &&!empty($Email) && !empty($Koment))
                 <div class="two-forms">
 
                     <div class="input-box">
-                        <input type="text" id="Firstname" class="input-field" placeholder="Emri" name="Firstname" required>
+                        <input type="text" id="Firstname" class="input-field" placeholder="Emri" name="Firstname"  required pattern="[A-Z][a-z]*" title="Emri duhet te filloje me shkronje te madhe">
                     </div>
 
                     <div class="input-box">
-                        <input type="text" id="Lastname" class="input-field" placeholder="Mbiemri" name="Lastname" required>
+                        <input type="text" id="Lastname" class="input-field" placeholder="Mbiemri" name="Lastname"  required pattern="[A-Z][a-z]*" title="Mbiemri duhet te filloje me shkronje te madhe">
                      </div>
                 </div>
 
                 <div class="input-box">
-                    <input type="text" id="Email" class="input-field" placeholder="Email" name="Email" required>
+                    <input type="email" id="Email" class="input-field" placeholder="Email" name="Email" required>
                 </div>
 
                 <div class="input-box">
-                    <textarea type="text" id="Koment" class="input-field" rows="5" placeholder="Shkruani mesazhin tuaj!" name="Koment" required></textarea>
+                    <textarea type="text" id="Koment" class="input-field" rows="5" placeholder="Shkruani mesazhin tuaj!" name="Koment" minlength="8" maxlength="300" required></textarea>
                 </div>
 
                 <div class="input-box">
