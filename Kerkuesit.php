@@ -1,13 +1,17 @@
-<?php 
+<?php
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+include("connection.php");
+include("functions.php");
 
-	$user_data = check_login($con);
+$user_data = check_login($con);
 
+// Write the query to get data from kerkuesit table
+$sql = "SELECT * FROM kerkuesit";
+
+// Execute the query
+$result = $con->query($sql);
 ?>
-
 
 
 <!DOCTYPE html>
@@ -17,11 +21,11 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="Kerkuesit.css">
+    <link rel="stylesheet" href="kerkuesit.css">
     <title>Dhuro Gjak</title>
 </head>
 <body>
-
+   
         <div class="wrapper">
            <nav class="nav">
                <div class="nav-logo">
@@ -29,14 +33,14 @@ session_start();
                </div>
                <div class="nav-menu" id="navMenu">
                    <ul>
-                       <li><a href="Ballina.php" class="link  ">Ballina</a></li>
+                       <li><a href="ballina.php" class="link  ">Ballina</a></li>
                        <li><a href="Dhuruesit.php" class="link ">Dhuruesit</a></li>
                        <li><a href="Kerkuesit.php" class="link active">Kerkuesit</a></li>
                        <li><a href="RrethNesh.php" class="link">Rreth Nesh</a></li>
-                       <li><a href="logout.php" class="link ">Log-Out</a></li>
+                       <li><a href="logout.php" class="link ">logout</a></li>
                    </ul>
                </div>
-
+            
                <div class="nav-menu-btn">
                    <i class="bx bx-menu" onclick="myMenuFunction()"></i>
                </div>
@@ -48,24 +52,22 @@ session_start();
 <br>
 <br>
 
-
+      
 <!----------------------------------------------------------------------->
 <div class="courses-container">
 	<div class="course">
 		<div class="course-preview">
 			<div class="container-1">
                 <div class="box-1">
-
-
-                    <b>
-             <h3> Keni nevoj per gjak ---- Kerko gjak </h3>
-
+                <b>
+             <h3>- Keni nevoj per gjak - </h3>
+           
               <br>
 
               <br>
               <div class="card-footer">
-                <a href="Kerkogjak.html">
-                    <button class="btn" >Vazhdo</button>
+                <a href="Kerkogjak.php">
+                    <button class="btn" >Kerko gjak</button>
                         </a>
             </div>
             </b>     
@@ -79,183 +81,43 @@ session_start();
 
 <!---------------------------------------------->
 <section id="section1">
-<div class="container">
-<div class="card card-1">
-
-    <!-- card-header -->
-    <div class="card-header">
-      <img src="Images/Dhuruesi1.jpg" class="card-img" />
-    </div>
-
-    <!------->
-
-    <!-- card-body -->
-    <div class="card-body">
-
-      <h3 class="card-title">Emri-Mbiemri</h3>
-      <p class="card-text">
-         Grupi Gjakut: -- <br><br>
-         Qyteti: Gjilan <br><br>
-         Data : ----- <br><br>
-         Nr-Telefonit: 044-444-333
-
-      </p>
-    </div>
-
-
-  </div>
-  <!-- Card 1 -->
-
-
-  <!-- Card 2 -->
-  <div class="card card-2">
-    <!-- card-header -->
-    <div class="card-header">
-      <img src="Images/Dhuruesi2.jpg" class="card-img" />
-    </div>
-    <!-- card-header -->
-
-    <!-- card-body -->
-    <div class="card-body">
-
-        <h3 class="card-title">Emri-Mbiemri</h3>
-        <p class="card-text">
-           Grupi Gjakut: -- <br><br>
-           Qyteti: Gjilan <br><br>
-           Data : ----- <br><br>
-           Nr-Telefonit: 044-444-333
-
-        </p>
-    </div>
-    <!-- card-body -->
-
-
-
-  </div>
-  <!-- Card 2 -->
-
-  <!-- Card 3 -->
-  <div class="card card-3">
-    <!-- card-header -->
-    <div class="card-header">
-      <img src="Images/Dhuruesi3.jpg" class="card-img" />
-    </div>
-    <!-- card-header -->
-
-    <!-- card-body -->
-    <div class="card-body">
-
-        <h3 class="card-title">Emri-Mbiemri</h3>
-        <p class="card-text">
-           Grupi Gjakut: -- <br><br>
-           Qyteti: Gjilan <br><br>
-           Data : ----- <br><br>
-           Nr-Telefonit: 044-444-333
-
-        </p>
-    </div>
-    <!-- card-body -->
-
-
-
-    <!-- card-footer -->
-  </div>
-</div>
-</section>
-
-<section id="section1">
-    <div class="container">
-    <div class="card card-1">
-
-        <!-- card-header -->
-        <div class="card-header">
-          <img src="Images/Dhuruesi4.jpg" class="card-img" />
+        <div class="container">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="card">';
+                    echo '<div class="card-header">';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" class="card-img" />';
+                    echo '</div>';
+                    echo '<div class="card-body">';
+                    echo '<h2 class="card-title">' . $row['Emri'] . ' ' . $row['Mbiemri'] . '</h2>';
+                    echo '<p class="card-text">';
+                    echo 'Nr-Telefonit: ' . $row['Nrtelefonit'] . '<br>','<br>';
+                    echo 'Grupi-Gjakut: ' . $row['Grupigjakut'] . '<br>','<br>';
+                    echo 'Qyteti: ' . $row['Qyteti'] . '<br>';
+                    echo '</p>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            }
+            ?>
         </div>
-
-        <!------->
-
-        <!-- card-body -->
-        <div class="card-body">
-
-            <h3 class="card-title">Emri-Mbiemri</h3>
-            <p class="card-text">
-               Grupi Gjakut: -- <br><br>
-               Qyteti: Gjilan <br><br>
-               Data : ----- <br><br>
-               Nr-Telefonit: 044-444-333
-
-            </p>
-        </div>
-
-
-      </div>
-
-
-
-      <!-- Card 2 -->
-      <div class="card card-2">
-        <!-- card-header -->
-        <div class="card-header">
-          <img src="Images/Dhuruesi5.jpg" class="card-img" />
-        </div>
-        <!-- card-header -->
-
-        <!-- card-body -->
-        <div class="card-body">
-
-            <h3 class="card-title">Emri-Mbiemri</h3>
-            <p class="card-text">
-               Grupi Gjakut: -- <br><br>
-               Qyteti: Gjilan <br><br>
-               Data : ----- <br><br>
-               Nr-Telefonit: 044-444-333
-
-            </p>
-        </div>
-        <!-- card-body -->
-      </div>
-      <!-- Card 2 -->
-
-
-      <!-- Card 3 -->
-      <div class="card card-3">
-        <!-- card-header -->
-        <div class="card-header">
-          <img src="Images/Dhuruesi6.jpg" class="card-img" />
-        </div>
-        <!-- card-header -->
-
-        <!-- card-body -->
-        <div class="card-body">
-
-            <h3 class="card-title">Emri-Mbiemri</h3>
-            <p class="card-text">
-               Grupi Gjakut: -- <br><br>
-               Qyteti: Gjilan <br><br>
-               Data : ----- <br><br>
-               Nr-Telefonit: 044-444-333
-
-            </p>
-        </div>
-        <!-- card-body -->
-
-      </div>
-    </div>
     </section>
+
 <!------------------------------------------------------------------------------->
           <footer class="footer">
             <div class="container">
-
+        
               <p class="copyright">
-                &copy; 2024 All Rights Reserved by <a href="#" class="copyright-link">Dhuro & Kerko Gjake</a>
+              &copy; 2024 All Rights Reserved by <a href="#" class="copyright-link">Dhuro & Kerko Gjake</a>
               </p>
-
+        
             </div> 
           </footer>
 
 
         <script>
-
+   
             function myMenuFunction() {
              var i = document.getElementById("navMenu");
              if(i.className === "nav-menu") {
