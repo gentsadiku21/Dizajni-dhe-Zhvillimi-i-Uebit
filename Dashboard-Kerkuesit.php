@@ -1,11 +1,18 @@
-<?php
-include "connection.php";
+<?php 
+session_start();
+
+include("connection.php");
 include("functions.php");
+
+$user_data = check_login($con);
 
 $sql = "SELECT * FROM kerkuesit";
 
 
+
 $result = $con->query($sql);
+
+
 ?>
 
 <!DOCTYPE html>

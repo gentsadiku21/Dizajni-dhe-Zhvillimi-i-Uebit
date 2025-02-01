@@ -4,6 +4,8 @@ session_start();
 include("connection.php");
 include("functions.php");
 
+$user_data = check_login($con);
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $Firstname = $_POST['Firstname'];
@@ -94,13 +96,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <form action="" method="post">
         <fieldset>
-            <legend>Personal Information:</legend>
+            <legend>Regjistro Perdorues:</legend>
             Firstname:<br>
             <input type="text" name="Firstname" placeholder="Firstname" required><br>
             Lastname:<br>
             <input type="text" name="Lastname" placeholder="Lastname" required><br>
             Email:<br>
-            <input type="text" name="Email" placeholder="Email" required><br>
+            <input type="email" name="Email" placeholder="Email" required><br>
             Password:<br>
             <input type="password" name="Password" placeholder="Password" required><br><br>
             <input type="submit" value="Register" name="register">

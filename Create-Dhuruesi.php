@@ -1,9 +1,10 @@
 <?php 
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+include("connection.php");
+include("functions.php");
 
+$user_data = check_login($con);
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -152,7 +153,7 @@ session_start();
             <option value="Podujev">Podujev</option>
         </select>
 
-        <label for="image">Ngarko Imazhin:</label>
+        <label for="image">Ngarko Foto:</label>
         <input type="file" id="image" name="image" accept="image/*" required>
 
         <button type="submit" name="upload">Dergo</button>

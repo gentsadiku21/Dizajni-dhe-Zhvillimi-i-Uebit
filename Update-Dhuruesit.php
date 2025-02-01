@@ -1,6 +1,12 @@
-<?php
-include "connection.php";
+<?php 
+session_start();
+
+include("connection.php");
 include("functions.php");
+
+$user_data = check_login($con);
+
+
 if (isset($_POST['update'])) {
     $user_id = $_POST['user_id'];
     $Emri = $_POST['Emri'];
