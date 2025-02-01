@@ -15,7 +15,7 @@ session_start();
 		if(!empty($Email) && !empty($Password) && !is_numeric($Email))
 		{
 
-			//read from database
+			
 			$query = "select * from users where Email = '$Email' limit 1";
 			$result = mysqli_query($con, $query);
 
