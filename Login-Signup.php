@@ -1,41 +1,33 @@
-<?php 
+<?php
 session_start();
 
-	include("connection.php");
-    include("functions.php");
+include("connection.php");
+include("functions.php");
 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    
+    $Firstname = $_POST['Firstname'];
+    $Lastname = $_POST['Lastname'];
+    $Email = $_POST['Email'];
+    $Password = $_POST['Password'];
 
+    if (!empty($Firstname) && !empty($Lastname) && !empty($Email) && !empty($Password) && !is_numeric($Email)) {
+        
+        // Hash the password
+        $hashedPassword = password_hash($Password, PASSWORD_DEFAULT);
 
-	if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
-		//something was posted
-		$Firstname=$_POST['Firstname'];
-		$Lastname=$_POST['Lastname'];
-		 $Email = $_POST['Email'];
-		$Password = $_POST['Password'];
+      
+        $user_id = random_num(20);
+        $query = "INSERT INTO users (user_id, Firstname, Lastname, Email, Password) VALUES ('$user_id', '$Firstname', '$Lastname', '$Email', '$hashedPassword')";
 
-    if( !empty($Firstname) && !empty($Lastname) &&!empty($Email) && !empty($Password) &&  !is_numeric($Email))
-		{
+        mysqli_query($con, $query);
 
-			//save to database
-			$user_id = random_num(20);
-			$query = "insert into users (user_id,Firstname,Lastname,Email,Password) values ('$user_id','$Firstname','$Lastname','$Email','$Password')";
-
-			mysqli_query($con, $query);
-
-
-
-			header("Location:Login.php");
-			die;
-		}
-		else
-		{
-			echo "Please enter some valid information!";
-	   }
-
-	}
-
-
+        header("Location: Login.php");
+        die;
+    } else {
+        echo "Please enter some valid information!";
+    }
+}
 ?>
 
 
